@@ -1,11 +1,11 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
-import { FollowingService } from './following.service';
+import { followingService } from './following.service';
 import { CreateFollowingDto } from './dto/create-following.dto';
 import { UpdateFollowingDto } from './dto/update-following.dto';
 
 @Controller('following')
 export class FollowingController {
-  constructor(private readonly followingService: FollowingService) {}
+  constructor(private readonly followingService: followingService) {}
 
   @Post()
   create(@Body() createFollowingDto: CreateFollowingDto) {

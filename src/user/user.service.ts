@@ -1,9 +1,9 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { Prisma, User } from '@prisma/client';
 import { PrismaService } from 'src/prisma/prisma.service';
-import { CreateUserDto } from './dto/create-user.dto';
 import bcrypt from "bcrypt";
-// import { JwtPayload } from 'src/auth/jwt.strategy';
+import { CreateAuthDto } from 'src/auth/dto/create-auth.dto';
+import { JwtPayload } from 'src/auth/jwt.strategy';
 
 @Injectable()
 export class UsersService {
@@ -21,7 +21,7 @@ export class UsersService {
     return await this.prisma.user.findUnique({ where: { id }});
   }
 
-  async findByLogin(login: CreateUserDto): Promise<User> {
+  async findByLogin(login: CreateAuthDto): Promise<User> {
     const user = await this.prisma.user.findUnique({ where: {
       email: login.email,
     },

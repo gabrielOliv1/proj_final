@@ -1,1 +1,5 @@
-export class CreateFollowingDto {}
+export class CreateFollowingDto {
+    name: string;
+
+    followingId: number
+}

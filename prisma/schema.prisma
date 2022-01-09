@@ -43,7 +43,7 @@ model Tweets {
   id  Int   @default(autoincrement()) @id
   content   String
   tweets    User? @relation(fields: [tweetId], references: [id])
-  tweetId   Int
+  tweetId   Int?
   favorite    FavoritesOnUsers[]
   category    CategoryOnTweets[]
 }

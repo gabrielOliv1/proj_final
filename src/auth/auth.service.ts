@@ -1,26 +1,34 @@
 import { Injectable } from '@nestjs/common';
+import { JwtService } from '@nestjs/jwt';
+import { UsersService } from 'src/user/user.service';
 import { CreateAuthDto } from './dto/create-auth.dto';
-import { UpdateAuthDto } from './dto/update-auth.dto';
+import { JwtPayload } from './jwt.strategy';
 
 @Injectable()
 export class AuthService {
-  create(createAuthDto: CreateAuthDto) {
-    return 'This action adds a new auth';
+  constructor(
+    private readonly usuarioService: UsersService,
+    private readonly jwtService: JwtService,
+  ) {}
+
+  async login(LoginDto: CreateAuthDto) {
+    const user = await this.usuarioService.findByLogin(LoginDto);
+
+    const token = this._createToken(user);
+        
+    return{ 
+      email: user.email,
+      password: user.email,
+      ...token
+    };
   }
 
-  findAll() {
-    return `This action returns all auth`;
-  }
-
-  findOne(id: number) {
-    return `This action returns a #${id} auth`;
-  }
-
-  update(id: number, updateAuthDto: UpdateAuthDto) {
-    return `This action updates a #${id} auth`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} auth`;
+  private _createToken({ email, password }: CreateAuthDto): any {
+    const user: JwtPayload = { email, password };
+    const accessToken = this.jwtService.sign(user);
+    return {
+      expiresIn: process.env.EXPIRESIN,
+      accessToken,
+    };
   }
 }
