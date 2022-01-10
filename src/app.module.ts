@@ -7,9 +7,10 @@ import { FollowingModule } from './following/following.module';
 import { TweetsModule } from './tweets/tweets.module';
 import { CategoriesModule } from './categories/categories.module';
 import { AuthModule } from './auth/auth.module';
+import { PrismaModule } from './prisma/prisma.module';
 
 @Module({
-  imports: [UserModule, FollowersModule, FollowingModule, TweetsModule, CategoriesModule, AuthModule],
+  imports: [UserModule, FollowersModule, FollowingModule, TweetsModule, CategoriesModule, AuthModule, PrismaModule],
   controllers: [AppController],
   providers: [AppService],
 })
