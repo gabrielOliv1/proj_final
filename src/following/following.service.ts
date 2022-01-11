@@ -1,4 +1,5 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, UseGuards } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
 import { Following } from '@prisma/client';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateFollowingDto } from './dto/create-following.dto';
@@ -18,14 +19,17 @@ export class followingService {
   }
 
   async findOne(id: number): Promise<Following> {
-    return await this.prisma.following.findUnique({ 
+    return await this.prisma.following.findUnique({
       where: {
-        id
+        id,
       },
     });
   }
 
-  async update(id: number, updatefollowingDto: UpdateFollowingDto): Promise<Following> {
+  async update(
+    id: number,
+    updatefollowingDto: UpdateFollowingDto,
+  ): Promise<Following> {
     return await this.prisma.following.update({
       data: { ...updatefollowingDto },
       where: { id },
@@ -35,7 +39,7 @@ export class followingService {
   async remove(id: number): Promise<Following> {
     return await this.prisma.following.delete({
       where: {
-        id
+        id,
       },
     });
   }

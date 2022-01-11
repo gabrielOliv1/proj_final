@@ -1,7 +1,7 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { Prisma, User } from '@prisma/client';
 import { PrismaService } from 'src/prisma/prisma.service';
-import bcrypt from "bcrypt";
+import bcrypt from 'bcrypt';
 import { CreateAuthDto } from 'src/auth/dto/create-auth.dto';
 import { JwtPayload } from 'src/auth/jwt.strategy';
 
@@ -18,14 +18,15 @@ export class UsersService {
   }
 
   async findOne(id: number): Promise<User> {
-    return await this.prisma.user.findUnique({ where: { id }});
+    return await this.prisma.user.findUnique({ where: { id } });
   }
 
   async findByLogin(login: CreateAuthDto): Promise<User> {
-    const user = await this.prisma.user.findUnique({ where: {
-      email: login.email,
-    },
-  });
+    const user = await this.prisma.user.findUnique({
+      where: {
+        email: login.email,
+      },
+    });
 
     if (!user) {
       throw new HttpException('Usuário não encontrado', HttpStatus.NOT_FOUND);
@@ -41,21 +42,23 @@ export class UsersService {
   }
 
   async validate(PayLoad: JwtPayload): Promise<User> {
-    const user = await this.prisma.user.findUnique({ where: {
-      email: PayLoad.email,
-    }});
+    const user = await this.prisma.user.findUnique({
+      where: {
+        email: PayLoad.email,
+      },
+    });
 
     if (!user) {
-      throw new HttpException("Token não autorizado!", HttpStatus.UNAUTHORIZED);
+      throw new HttpException('Token não autorizado!', HttpStatus.UNAUTHORIZED);
     }
-    return user; 
+    return user;
   }
- 
+
   async update(id: number, data: Prisma.UserUpdateInput): Promise<User> {
     return await this.prisma.user.update({ data, where: { id } });
   }
 
   async remove(id: number): Promise<User> {
-    return await this.prisma.user.delete({ where: { id }});
+    return await this.prisma.user.delete({ where: { id } });
   }
 }

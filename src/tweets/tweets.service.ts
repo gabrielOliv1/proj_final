@@ -1,4 +1,5 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, UseGuards } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
 import { Tweets } from '@prisma/client';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateTweetDto } from './dto/create-tweet.dto';
@@ -9,9 +10,8 @@ export class TweetsService {
   constructor(private prisma: PrismaService) {}
   async create(createTweetDto: CreateTweetDto): Promise<Tweets> {
     return await this.prisma.tweets.create({
-       data:
-        { ...createTweetDto }
-      });
+      data: { ...createTweetDto },
+    });
   }
 
   async findAll(): Promise<Tweets[]> {
@@ -25,12 +25,12 @@ export class TweetsService {
   }
 
   async update(id: number, updateTweetDto: UpdateTweetDto): Promise<Tweets> {
-    return await this.prisma.tweets.update({ 
+    return await this.prisma.tweets.update({
       data: {
-        ...updateTweetDto
+        ...updateTweetDto,
       },
       where: {
-        id
+        id,
       },
     });
   }
@@ -38,7 +38,7 @@ export class TweetsService {
   async remove(id: number): Promise<Tweets> {
     return await this.prisma.tweets.delete({
       where: {
-        id
+        id,
       },
     });
   }

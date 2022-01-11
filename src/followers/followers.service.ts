@@ -1,4 +1,5 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, UseGuards } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
 import { Followers } from '@prisma/client';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateFollowerDto } from './dto/create-follower.dto';
