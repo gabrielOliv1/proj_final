@@ -1,9 +1,10 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { Prisma, User } from '@prisma/client';
 import { PrismaService } from 'src/prisma/prisma.service';
-import bcrypt from 'bcrypt';
+import * as bcrypt from 'bcrypt';
 import { CreateAuthDto } from 'src/auth/dto/create-auth.dto';
 import { JwtPayload } from 'src/auth/jwt.strategy';
+
 
 @Injectable()
 export class UsersService {
@@ -32,7 +33,10 @@ export class UsersService {
       throw new HttpException('Usuário não encontrado', HttpStatus.NOT_FOUND);
     }
 
+    console.log(login.password);
+    console.log(user.password);
     const CompararSenha = await bcrypt.compare(login.password, user.password);
+    console.log(CompararSenha);
 
     if (!CompararSenha) {
       throw new HttpException('Senha inválida', HttpStatus.UNAUTHORIZED);

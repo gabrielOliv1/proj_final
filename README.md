@@ -1,73 +1,81 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
-</p>
+# Twitter Clone
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+> Este é o 2° projeto entregável do 4° módulo de Backend da BlueEdtech. O projeto consiste na construção de uma API para o controle de uma rede social, e a homenageada escolhida foi o Twitter. 
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+<h1 align="center">
+  <img href="https://www.freepnglogos.com/uploads/twitter-logo-png/twitter-message-chat-inbox-png-logo-26.png" width="200"></img>
+</h1>
 
-## Description
+**Conteúdos**
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+###
+* [Tecnologias usadas](#tecnologias-usadas);
+* [Instalações e configurações](#instalação);
+    * [NestJS](#nestjs);
+    * [Prisma](#prisma);
+* [Rotas](#rotas);
 
-## Installation
 
-```bash
-$ npm install
+### Tecnologias usadas: 
+- [NestJS](https://docs.nestjs.com/);
+- [Typescript](https://www.typescriptlang.org/docs/);
+- [PostgreSQL](https://www.postgresql.org/docs/);
+- [Prisma](https://docs.nestjs.com/recipes/prisma);
+
+### Instalação
+
+### NestJS
+
+Primeiramente, vamos rodar alguns comandos para iniciar nosso projeto
+
+``` bash
+npm i -g @nestjs/cli
 ```
 
-## Running the app
-
-```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+``` bash
+nest new nome-do-projeto
 ```
 
-## Test
+### Prisma
 
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+``` bash
+npm i prisma --save dev
 ```
 
-## Support
+``` bash
+npx prisma init
+```
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+Com estes comandos, será criado um novo diretório chamado prisma e os seguintes arquivos:
 
-## Stay in touch
+- Schema.prisma;
+- .env
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+O _Schema.prisma_ nos possibilitará criar e modificar os modelos em nosso banco de dados. Já o arquivo dotenv, definirá a conexão com o PostgreSQL e também carregará informações confidenciais.
 
-## License
+A URL de conexão deve seguir este padrão: _"postgresql://postgres:password@localhost:5432/nome-bd"_
 
-Nest is [MIT licensed](LICENSE).
+Estabelecida a conexão, construa os modelos e poderá criá-los no banco de dados através deste comando:
+
+``` bash
+npm prisma db push
+```
+
+Em seguida, instale o Prisma Client:
+``` bash
+npm i @prisma/client
+```
+
+Sempre que houver uma alteração no Schema, rode o comando abaixo para sincronizar as mudanças com o aplicativo.
+``` bash
+npx prisma generate
+```
+Em seguida, um novo push.
+
+Para utilizar o Prisma Client, crie um diretório "lib" e um arquivo "prisma.ts" e insira o código para habilitar o Client em uma variável:
+
+<h1>
+  <img href="C:\Users\gabri\Desktop\code.png" width="200"></img>
+</h1>
+
+### Rotas

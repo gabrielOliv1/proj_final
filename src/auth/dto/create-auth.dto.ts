@@ -1,12 +1,32 @@
-import { IsAlphanumeric, IsEmail, IsNotEmpty, IsString } from "class-validator";
+import { IsAlphanumeric, IsDate, IsEmail, IsNotEmpty, IsString } from "class-validator";
 
 export class CreateAuthDto {
+    // @IsNotEmpty()
+    // @IsString()
+    // name: string;
+
+    // @IsNotEmpty()
+    // @IsString()
+    // lastname: string;
+
     @IsNotEmpty()
-    @IsEmail()
     @IsString()
+    @IsEmail()
     email: string;
 
     @IsNotEmpty()
     @IsString()
-    password: string
+    password: string;
+
+    // @IsNotEmpty()
+    // @IsString()
+    // about: string;
+
+    // @IsNotEmpty()
+    // @IsString()
+    // birthday: string;
+
+    // @IsNotEmpty()
+    // @IsDate()
+    // createdAt: Date;
 }

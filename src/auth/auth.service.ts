@@ -18,13 +18,14 @@ export class AuthService {
         
     return{ 
       email: user.email,
-      password: user.email,
+      password: user.password,
       ...token
     };
   }
 
-  private _createToken({ email, password }: CreateAuthDto): any {
-    const user: JwtPayload = { email, password };
+  private _createToken({  email }: CreateAuthDto): any {
+    const user: JwtPayload = { email };
+    // console.log(process.env.SECRET_KEY)
     const accessToken = this.jwtService.sign(user);
     return {
       expiresIn: process.env.EXPIRESIN,
