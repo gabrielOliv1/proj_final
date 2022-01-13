@@ -33,10 +33,10 @@ export class UsersService {
       throw new HttpException('Usuário não encontrado', HttpStatus.NOT_FOUND);
     }
 
-    console.log(login.password);
-    console.log(user.password);
+    // console.log(login.password);
+    // console.log(user.password);
     const CompararSenha = await bcrypt.compare(login.password, user.password);
-    console.log(CompararSenha);
+    // console.log(CompararSenha);
 
     if (!CompararSenha) {
       throw new HttpException('Senha inválida', HttpStatus.UNAUTHORIZED);

@@ -15,7 +15,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     });
   }
   validate(payload: JwtPayload) {
-    console.log(process.env.SECRETKEY)
+    // console.log(process.env.SECRETKEY)
     return payload;
   }
 }

@@ -2,9 +2,10 @@
 
 > Este é o 2° projeto entregável do 4° módulo de Backend da BlueEdtech. O projeto consiste na construção de uma API para o controle de uma rede social, e a homenageada escolhida foi o Twitter. 
 
-<h1 align="center">
-  <img href="https://www.freepnglogos.com/uploads/twitter-logo-png/twitter-message-chat-inbox-png-logo-26.png" width="200"></img>
-</h1>
+
+![twitter-message-chat-inbox-png-logo-26](https://user-images.githubusercontent.com/89107513/149239710-aa98d35d-faee-4b63-b19a-0bde07b6a774.png)
+
+
 
 **Conteúdos**
 
@@ -74,8 +75,20 @@ Em seguida, um novo push.
 
 Para utilizar o Prisma Client, crie um diretório "lib" e um arquivo "prisma.ts" e insira o código para habilitar o Client em uma variável:
 
-<h1>
-  <img href="C:\Users\gabri\Desktop\code.png" width="200"></img>
-</h1>
+![code](https://user-images.githubusercontent.com/89107513/149239672-531312d4-3b55-4d55-b1e0-b2b13a3a96f6.png)
 
 ### Rotas
+
+Para acessar as rotas pelo Swagger, execute:
+>npm run start:dev
+e depois, abra a guia:
+>http:localhost:3000/api
+
+![2022-01-12 (3)](https://user-images.githubusercontent.com/89107513/149243561-45dbb500-865b-4c52-b81d-1813d4c2b64f.png)
+
+Exemplo, inserindo um novo User.
+
+![2022-01-12](https://user-images.githubusercontent.com/89107513/149240358-979f8b78-050c-4ac8-8c70-49d406c9bd60.png)
+
+
+

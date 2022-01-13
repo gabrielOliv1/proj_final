@@ -25,7 +25,6 @@ export class AuthService {
 
   private _createToken({  email }: CreateAuthDto): any {
     const user: JwtPayload = { email };
-    // console.log(process.env.SECRET_KEY)
     const accessToken = this.jwtService.sign(user);
     return {
       expiresIn: process.env.EXPIRESIN,
