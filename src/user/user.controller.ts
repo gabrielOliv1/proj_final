@@ -15,13 +15,13 @@ export class UserController {
     return this.userService.create(createUserDto);
   }
 
-  @Get()
+  @Get('findAll')
   findAll() {
     return this.userService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
+  @Get('findOne/:id')
+  findOne(@Param('id') id: number) {
     return this.userService.findOne(+id);
   }
 
